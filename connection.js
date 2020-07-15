@@ -1,11 +1,16 @@
 const mysql = require('mysql2')
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  database: 'moviesapp',
-  password: process.env.DB_PASS
-})
+const dbSettings = typeof process.env.CLEARDB_DATABASE_URL === 'string'
+  ? process.env.CLEARDB_DATABASE_URL
+  : {
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASS
+
+  }
+
+const connection = mysql.createConnection(dbSettings)
 
 module.exports = connection
 
