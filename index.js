@@ -9,8 +9,10 @@ app.use(cors())
 
 app.use('/api/movies', moviesRouter)
 
-app.listen(5000, (err) => {
+const port = process.env.PORT || 5000
+
+app.listen(port, (err) => {
   if (err) console.error(err)
-  else console.log(`Listening on port 5000`)
+  else console.log(`Listening on port ${port}`)
 })
 
