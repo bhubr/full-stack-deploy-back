@@ -10,7 +10,7 @@ const dbSettings = typeof process.env.CLEARDB_DATABASE_URL === 'string'
 
   }
 
-const connection = mysql.createConnection(dbSettings)
+const connection = mysql.createPool(dbSettings)
 
 module.exports = connection
 
